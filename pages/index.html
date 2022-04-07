@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+  <link rel="stylesheet" href="../assets/css/root.css">
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="row">
+      <div class="col-xs-1 navbar-header">
+        <img src="../assets/images/logo.png" class="icon img-responsive" alt="Logo">
+      </div>
+      <div class="col-xs-10 search-bar-container">
+        <div class="dropdown">
+          <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" id="dropdownMenuButton"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="dropdown-text" dir="rtl">جستجو بر اساس:</span>
+            <span class="dropdown-icon iconify-inline" data-icon="entypo:triangle-down"></span>
+          </button>
+          <div class="dropdown-menu sort-by-menu " aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item sort-by-item " href="#">نام</a>
+            <a class="dropdown-item sort-by-item " href="#">ژانر</a>
+            <a class="dropdown-item sort-by-item " href="#">تاریخ تولید</a>
+          </div>
+        </div>
+
+        <div class="search-input-container">
+          <div class="form-group has-search">
+            <span class="fa fa-search form-control-feedback"></span>
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-1 profile-container">
+        <span class="profile-icon iconify-inline" data-icon="healthicons:ui-user-profile"></span>
+      </div>
+  </nav>
+
+</body>
+
+</html>
