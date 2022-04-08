@@ -31,3 +31,34 @@
   bottom: 0;
   right: 0;
 }
+
+.rank-box-container {
+  color: white;
+  margin-top: 40%;
+  width: 80%;
+  text-align: center;
+
+}
+
+.rank-box-container span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+
+}
+
+.rank-box {
+  background-color: var(--transparent-primary-color);
+  width: 90%;
+
+  margin: 10px auto 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.rank-box span {
+  padding: 15px 0;
+}
