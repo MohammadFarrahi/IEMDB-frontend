@@ -3,16 +3,16 @@
 }
 
 .movie-picture-list {
-  margin-top: 10%;
+  margin-top: 5%;
 }
 
 .movie-picture-container {
-  width: 85%;
+  width: 100%;
 }
 
 .movie-picture {
   width: 100%;
-  padding-top: 100%;
+  padding-top: 85%;
 
   position: relative;
   -webkit-box-shadow: 3px 5px 3px 1px #000000;

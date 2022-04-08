@@ -2,7 +2,7 @@
   --primary-color: #b12025;
   --transparent-primary-color: rgba(177, 32, 37, .5);
   --background-color: #292929;
-  --navbar-height: 10vh;
+  --navbar-height: 8vh;
   --body-height: calc(100vh - var(--navbar-height));
 }
 
