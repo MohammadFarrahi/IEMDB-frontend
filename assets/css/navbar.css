@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #b12025;
+  background-color: var(--primary-color);
   border: 0;
   margin: 0;
   padding: 0;
@@ -20,15 +20,15 @@
 .navbar-header {}
 
 .icon {
-  height: 10vh;
+  height: var(--navbar-height);
   margin: 0;
 }
 
 .profile-container {
   display: flex;
   align-items: center;
-  justify-content: center;
-  height: 10vh;
+  justify-content: right;
+  height: var(--navbar-height);
 }
 
 .profile-icon {
@@ -40,13 +40,13 @@
 .search-bar-container {
   display: flex;
   align-items: center;
-  height: 10vh;
+  height: var(--navbar-height);
   padding: 0 20%;
 }
 
 .dropdown-icon {
   font-size: 20px;
-  color: #b12025;
+  color: var(--primary-color);
 }
 
 .dropdown-btn, .dropdown-btn:hover, .show>.btn-secondary.dropdown-toggle, .show>.btn-secondary.dropdown-toggle {
@@ -56,15 +56,8 @@
   border: none;
 }
 
-/* .dropdown-btn:hover, .show>.btn-secondary.dropdown-toggle{
-  background-color: white;
-  color: black;
-  font-size: larger;
-} */
-
 .show .sort-by-menu {
-  background-color: rgba(177, 32, 37, .5);
-  /* opacity: 50%; */
+  background-color: var(--transparent-primary-color);
   display: flex;
   flex-direction: column;
   border-radius: 20px;
@@ -72,7 +65,6 @@
 }
 
 .show .sort-by-item {
-  /* opacity: 100%; */
   color: white;
   font-size: 20px;
   font-weight: bold;
@@ -90,5 +82,5 @@
   background-color: white;
   font-size: 2rem;
   font-weight:700 !important;
-  color: #b12025;
+  color: var(--primary-color);
 }
