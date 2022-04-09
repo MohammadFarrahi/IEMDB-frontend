@@ -4,6 +4,9 @@
   --background-color: #292929;
   --navbar-height: 8vh;
   --body-height: calc(100vh - var(--navbar-height));
+  --movie-cover-height: 70vh;
+  --movie-content-top: 55vh;
+
 }
 
 body {
