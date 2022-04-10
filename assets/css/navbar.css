@@ -13,11 +13,10 @@
   padding: 0;
   border: 0;
   height: 100%;
-
-
 }
 
-.navbar-header {}
+.navbar-header {
+}
 
 .icon {
   height: var(--navbar-height);
@@ -49,7 +48,10 @@
   color: var(--primary-color);
 }
 
-.dropdown-btn, .dropdown-btn:hover, .show>.btn-secondary.dropdown-toggle, .show>.btn-secondary.dropdown-toggle {
+.dropdown-btn,
+.dropdown-btn:hover,
+.show > .btn-secondary.dropdown-toggle,
+.show > .btn-secondary.dropdown-toggle {
   background-color: white;
   color: black;
   font-size: larger;
@@ -61,7 +63,6 @@
   display: flex;
   flex-direction: column;
   border-radius: 20px;
-
 }
 
 .show .sort-by-item {
@@ -81,6 +82,6 @@
 .search-icon {
   background-color: white;
   font-size: 2rem;
-  font-weight:700 !important;
+  font-weight: 700 !important;
   color: var(--primary-color);
 }
