@@ -140,7 +140,7 @@ hr.divider {
   width: 90%;
 }
 
-.actors-container {
+.card-container {
   width: 100%;
   background-color: var(--card-background-color);
   border-radius: 20px;
@@ -148,7 +148,7 @@ hr.divider {
   margin: 20px 0;
 }
 
-.actors-container span {
+.card-container span {
   color: white;
   display: block;
   width: 100%;
@@ -162,5 +162,35 @@ hr.divider {
 }
 
 .actor-circle-container img {
-  margin: 30px auto; 
+  margin: 30px auto;
+}
+
+.vote-container {
+  border-radius: 40px;
+  margin: 20px auto;
+  width: 80%;
+  background-color: white;
+  padding: 20px;
+}
+
+.vote-container span.title {
+  display: block;
+  width: 100%;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 1.2rem;
+  direction: rtl;
+  text-align: right;
+}
+
+.vote-container input {
+  border: none;
+  display: block;
+  width: 95%;
+  margin: 20px auto;
+  padding: 10px 5px;
+  direction: rtl;
+  background-color: rgba(221,221,221, 0.7);
+  border-radius: 15px;
+  font-size: 1.4rem;
+  
 }
