@@ -2,8 +2,12 @@
   --primary-color: #b12025;
   --transparent-primary-color: rgba(177, 32, 37, .7);
   --background-color: #292929;
+  --card-background-color: #4e4e50;
   --navbar-height: 8vh;
   --body-height: calc(100vh - var(--navbar-height));
+  --movie-cover-height: 60vh;
+  --movie-content-top: 50vh;
+
 }
 
 body {
