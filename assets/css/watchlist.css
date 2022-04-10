@@ -61,3 +61,77 @@
 .wl-movie-body .info-line span {
   margin: 0 5px;
 }
+
+.recommend-movies {
+  width: 70%;
+  margin: 5vh auto;
+}
+
+.r-movies-card {
+  background-color: var(--card-background-color);
+  width: 100%;
+  border-radius: 20px;
+  margin: 20px 0;
+  color: white;
+}
+
+.r-movies-card span {
+  display: block;
+  width: 100%;
+  /* padding: 10px; */
+  text-align: center;
+}
+
+.movie-picture-container {
+  width: 100%;
+}
+
+.movie-picture {
+  width: 100%;
+  padding-top: 85%;
+  position: relative;
+  
+  -webkit-box-shadow: 3px 5px 3px 1px #000000;
+  box-shadow: 3px 5px 3px 1px #000000;
+}
+
+.hover-cover {
+  display: none;
+
+  background-color: var(--transparent-primary-color);
+  color: white;
+  font-size: 1.5rem;
+}
+
+.hover-cover span {
+  padding: 20px 0;
+}
+
+.movie-picture:hover .hover-cover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.movie-picture img {
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
