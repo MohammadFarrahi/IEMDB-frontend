@@ -24,7 +24,7 @@
 }
 
 .movie-header-img {
-  height: 30vh;
+  height: 35vh;
 }
 
 
@@ -34,3 +34,56 @@
   width: 100%;
   height: 100%;
 }
+
+.movie-header-rate {
+  background-color: var(--transparent-primary-color);
+  height: 30vh;
+  width: 90%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.movie-rate {
+  margin-top: 30px;
+  font-size: 3.8rem;
+  font-weight: 500;
+  color: white;
+}
+
+.movie-header-info {
+  margin-bottom: 50px;
+}
+
+.movie-header-info span {
+  display: block;
+  width: 100%;
+  color: white;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.movie-header-info span.justify-right {
+  text-align: right;
+  direction: rtl;
+}
+
+.movie-header-info span.justify-left {
+  text-align: left;
+}
+
+.movie-header-info span.justify-justified {
+  text-align: justify;
+  direction: rtl;
+}
+
+hr.divider {
+  border-top: 1px solid rgba(187, 187, 187, 0.2);
+}
+
+.movie-header-info hr.divider {
+  margin: 40px 0;
+  width: 90%;
+}
+
