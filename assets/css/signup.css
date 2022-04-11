@@ -9,10 +9,8 @@
   min-width: 350px;
   min-height: 730px;
   width: 30vw;
-  height: var(--floating-card-height);
-
+  height: auto;
   margin: calc((100vh - var(--floating-card-height))/2) auto;
-
   border-radius: 20px;
 }
 
