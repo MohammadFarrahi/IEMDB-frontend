@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200&display=swap');
 :root {
   --primary-color: #b12025;
   --transparent-primary-color: rgba(177, 32, 37, .7);
@@ -7,10 +8,15 @@
   --body-height: calc(100vh - var(--navbar-height));
   --movie-cover-height: 60vh;
   --movie-content-top: 50vh;
-
+  
+  --floating-card-height: 70vh;
 }
 
 body {
   background-color: var(--background-color);
+}
+
+* {
+  font-family: 'Vazirmatn', sans-serif;
 }
 
