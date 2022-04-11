@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;200&display=swap');
 :root {
   --primary-color: #b12025;
   --transparent-primary-color: rgba(177, 32, 37, .7);
@@ -13,5 +14,9 @@
 
 body {
   background-color: var(--background-color);
+}
+
+* {
+  font-family: 'Vazirmatn', sans-serif;
 }
 
