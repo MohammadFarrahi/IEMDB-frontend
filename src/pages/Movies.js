@@ -29,8 +29,12 @@ export default function Movies() {
     else if (basedOn === 'rate') {
       compareFunction = rateCompare;
     }
+    console.log(movies.slice(0, 3));
     movies.sort(compareFunction);
-    setMovies(movies);
+    movies.reverse();
+    console.log(movies.slice(0, 3));
+
+    setMovies(movies.slice());
   }
 
   useEffect(() => {
@@ -69,8 +73,8 @@ export default function Movies() {
           <div className="rank-box-container">
             <span dir="rtl" className="lead">رتبه‌بندی بر اساس:</span>
             <div className="rank-box">
-              <span dir="rtl" className="lead"> تاریخ</span>
-              <span dir="rtl" className="lead">امتیاز imdb</span>
+              <span dir="rtl" className="lead" onClick={() => {handleSort('date')}}> تاریخ</span>
+              <span dir="rtl" className="lead" onClick={() => {handleSort('rate')}}>امتیاز imdb</span>
             </div>
           </div>
         </div>
