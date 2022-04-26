@@ -1,0 +1,55 @@
+.movies-container {
+  height: var(--body-height);
+}
+
+.movie-picture-list {
+  margin-top: 5%;
+}
+
+.movie-picture-container {
+  width: 100%;
+}
+
+.movie-picture {
+  width: 100%;
+  padding-top: 85%;
+  position: relative;
+  
+  -webkit-box-shadow: 3px 5px 3px 1px #000000;
+  box-shadow: 3px 5px 3px 1px #000000;
+}
+
+/* .movie-picture:hover .hover-cover {
+  opacity: 0.5;
+} */
+
+.rank-box-container {
+  color: white;
+  margin-top: 40%;
+  width: 80%;
+  text-align: center;
+
+}
+
+.rank-box-container span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+
+}
+
+.rank-box {
+  background-color: var(--transparent-primary-color);
+  width: 90%;
+
+  margin: 10px auto 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.rank-box span {
+  padding: 15px 0;
+}
