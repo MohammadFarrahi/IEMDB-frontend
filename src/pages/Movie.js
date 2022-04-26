@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 
 import './Movie.css'
 
@@ -116,12 +116,15 @@ export default function Movie() {
                   <span>بازیگران</span>
                   <div className="actor-circle-container">
                     {movie.cast.map(item => (
-                      <img
-                        key={item.id}
-                        src={item.imgUrl}
-                        className="rounded-circle"
-                        alt={item.name}
-                      />
+                      <Link to={'/actors/' + item.id}>
+
+                        <img
+                          key={item.id}
+                          src={item.imgUrl}
+                          className="rounded-circle"
+                          alt={item.name}
+                        />
+                      </Link>
                     ))}
                   </div>
                 </div>
