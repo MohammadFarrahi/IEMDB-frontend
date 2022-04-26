@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import './Actor.css'
 
 export default function Actor() {
@@ -45,16 +45,18 @@ export default function Actor() {
                 <div class="card-container container">
                   <div class="row p-0 m-0">
                     {actor.performedMovies.map(movie => (
+                      <Link to={'/movies/' + movie.id}>
 
-                      <div class="col-4 p-0">
-                        <div class="movie-picture">
-                          <img src={movie.coverImgUrl} class="img-rounded" alt={movie.name} />
-                          <div class="hover-cover">
-                            <span class="lead">{movie.name}</span>
-                            <span class="lead">{movie.imdbRate}</span>
+                        <div class="col-4 p-0" key={movie.id}>
+                          <div class="movie-picture">
+                            <img src={movie.coverImgUrl} class="img-rounded" alt={movie.name} />
+                            <div class="hover-cover">
+                              <span class="lead">{movie.name}</span>
+                              <span class="lead">{movie.imdbRate}</span>
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      </Link>
                     ))}
                   </div>
                 </div>
