@@ -1,6 +1,6 @@
 import './Login.css';
 import logo from '../images/logo.png'
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useState } from 'react';
 
@@ -81,7 +81,9 @@ export default function Login() {
 
             <div className="d-flex align-items-center justify-content-center pb-4">
               <div className="mx-3">
-                <button type="button" className="btn btn-outline-danger">ثبت نام</button>
+                <Link to='/signup'>
+                  <button type="button" className="btn btn-outline-danger">ثبت نام</button>
+                </Link>
               </div>
               <p className="mb-0 me-2">حساب ندارید؟</p>
             </div>
