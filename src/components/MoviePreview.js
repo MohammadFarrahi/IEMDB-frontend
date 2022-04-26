@@ -1,4 +1,4 @@
-import './MoviePreview.js';
+import './MoviePreview.css';
 
 export default function MoviePreview(props) {
   const {image, name, rate} = props;

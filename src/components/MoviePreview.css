@@ -1,3 +1,16 @@
+.movie-picture-container {
+  width: 100%;
+}
+
+.movie-picture {
+  width: 100%;
+  padding-top: 85%;
+  position: relative;
+  
+  -webkit-box-shadow: 3px 5px 3px 1px #000000;
+  box-shadow: 3px 5px 3px 1px #000000;
+}
+
 .hover-cover {
   display: none;
 
