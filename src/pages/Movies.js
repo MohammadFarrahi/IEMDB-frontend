@@ -4,9 +4,34 @@ import { Link } from 'react-router-dom';
 import MoviePreview from '../components/MoviePreview';
 import './Movies.css';
 
+const rateCompare = (a, b) => {
+  return a.imdbRate - b.imdbRate;
+}
+
+const dateCompare = (a, b) => {
+  if (a.releaseDate > b.releaseDate)
+    return 1;
+  else if (a.releaseDate === b.releaseDate)
+    return 0;
+  else
+    return -1;
+}
+
 export default function Movies() {
 
   const [movies, setMovies] = useState();
+
+  const handleSort = basedOn => {
+    let compareFunction;
+    if (basedOn === 'date') {
+      compareFunction = dateCompare;
+    }
+    else if (basedOn === 'rate') {
+      compareFunction = rateCompare;
+    }
+    movies.sort(compareFunction);
+    setMovies(movies);
+  }
 
   useEffect(() => {
     async function fetchData() {
@@ -31,7 +56,7 @@ export default function Movies() {
               {movies &&
                 movies.map(item => (
                   <div className="col-3 mb-3" key={item.id}>
-                    <Link to={'/movies/' + item.id}> 
+                    <Link to={'/movies/' + item.id}>
                       <MoviePreview image={item.coverImgUrl} name={item.name} rate={item.imdbRate} />
                     </Link>
                   </div>
