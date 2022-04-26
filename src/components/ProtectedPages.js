@@ -1,7 +1,9 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 
 export default function ProtectedPages() {
+
+  const location = useLocation();
 
   var isLoggedIn = localStorage.getItem('userLoggedIn');
 

@@ -10,8 +10,8 @@ import ProtectedPages from "./ProtectedPages";
 export default function Router() {
   return (
     <Routes>
+      <Route path='/login' element={<Login />} />
       <Route element={<Layout />}>
-        <Route path='/login' element={<Login />} />
         <Route path='/movies' element={<Movies />} />
         <Route path='/movies/:id' element={<Movie />} />
         <Route path='/actors/:id' element={<Actor />} />
