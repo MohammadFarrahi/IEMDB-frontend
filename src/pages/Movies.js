@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import MoviePreview from '../components/Movie';
+import MoviePreview from '../components/MoviePreview';
 import './Movies.css';
 
 export default function Movies() {
