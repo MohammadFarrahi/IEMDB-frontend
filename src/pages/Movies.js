@@ -29,11 +29,8 @@ export default function Movies() {
     else if (basedOn === 'rate') {
       compareFunction = rateCompare;
     }
-    console.log(movies.slice(0, 3));
     movies.sort(compareFunction);
     movies.reverse();
-    console.log(movies.slice(0, 3));
-
     setMovies(movies.slice());
   }
 

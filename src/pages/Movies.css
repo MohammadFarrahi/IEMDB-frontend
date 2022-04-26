@@ -41,4 +41,9 @@
 
 .rank-box span {
   padding: 15px 0;
+  cursor: pointer;
+}
+
+.rank-box span:hover {
+  background-color: rgba(177, 32, 37, .9);
 }
