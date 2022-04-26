@@ -2,6 +2,7 @@ import './Login.css';
 import logo from '../images/logo.png'
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useState } from 'react';
 
 export default function Login() {
 
@@ -15,20 +16,20 @@ export default function Login() {
     e.preventDefault();
     const from = location.state?.from || '/movies';
     try {
-      const data = {username, password};
+      const data = { username, password };
 
       const response = await axios.post('/auth/login/', data);
 
-      if(response.data.status){
+      if (response.data.status) {
         localStorage.setItem('userLoggedIn', true);
         localStorage.setItem('userId', username);
         navigate(from, { replace: true });
       }
-      else{
+      else {
         //TODO: handle false auth
       }
 
-    }catch (e) {
+    } catch (e) {
       console.log(e);
     }
 
@@ -38,42 +39,56 @@ export default function Login() {
 
   return (
     <>
-    <div className="floating-card">
-      
-      <div className="card-body p-md-5 mx-md-4">
+      <div className="floating-card">
 
-        <div className="icon-picture">
-          <img src={logo}/>  
-        </div>
+        <div className="card-body p-md-5 mx-md-4">
 
-        <div className="text-center">
-          <h2 className="mt-1 mb-5 pb-1">فرم ورود</h2>
-        </div>
-
-        <form>
-          <p>لطفا اطلاعات خود را وارد کنید</p>
-
-          <div className="form-outline mb-4">
-            <input type="email" id="form2Example11" className="form-control" />
-            <label className="form-label" for="form2Example11">نام کاربری</label>
+          <div className="icon-picture">
+            <img src={logo} />
           </div>
 
-          <div className="form-outline mb-4">
-            <input type="password" id="form2Example22" className="form-control" />
-            <label className="form-label" for="form2Example22">رمز عبور</label>
+          <div className="text-center">
+            <h2 className="mt-1 mb-5 pb-1">فرم ورود</h2>
           </div>
 
-          <div className="d-flex align-items-center justify-content-center pb-4">
-            <div className="mx-3">
-              <button type="button" className="btn btn-outline-danger">ثبت نام</button>
+          <form onSubmit={handleLogin}>
+            <p>لطفا اطلاعات خود را وارد کنید</p>
+
+            <div className="form-outline mb-4">
+              <input
+                required
+                type="email"
+                id="form2Example11"
+                className="form-control"
+                onChange={e => { setUsername(e.target.value) }}
+              />
+              <label className="form-label" for="form2Example11">نام کاربری</label>
             </div>
-            <p className="mb-0 me-2">حساب ندارید؟</p>
-          </div>
 
-        </form>
+            <div className="form-outline mb-4">
+              <input
+                required
+                type="password"
+                id="form2Example22"
+                className="form-control"
+                onChange={e => { setPassword(e.target.value) }}
+              />
+              <label className="form-label" for="form2Example22">رمز عبور</label>
+            </div>
+            <div className="text-center pt-1 mb-5 pb-1">
+              <button className="btn btn-danger btn-block fa-lg gradient-custom-2 mb-3" type="submit">ورود</button>
+            </div>
 
+            <div className="d-flex align-items-center justify-content-center pb-4">
+              <div className="mx-3">
+                <button type="button" className="btn btn-outline-danger">ثبت نام</button>
+              </div>
+              <p className="mb-0 me-2">حساب ندارید؟</p>
+            </div>
+
+          </form>
+        </div>
       </div>
-    </div>
     </>
   )
 }
