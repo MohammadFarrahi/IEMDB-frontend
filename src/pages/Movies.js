@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import MoviePreview from '../components/MoviePreview';
 import './Movies.css';
 
@@ -30,22 +31,24 @@ export default function Movies() {
               {movies &&
                 movies.map(item => (
                   <div className="col-3 mb-3" key={item.id}>
-                    <MoviePreview image={item.coverImgUrl} name={item.name} rate={item.imdbRate} />
+                    <Link to={'/movies/' + item.id}> 
+                      <MoviePreview image={item.coverImgUrl} name={item.name} rate={item.imdbRate} />
+                    </Link>
                   </div>
                 ))
               }
             </div>
           </div>
         </div>
-        <div class="col-2">
-        <div class="rank-box-container">
-          <span dir="rtl" class="lead">رتبه‌بندی بر اساس:</span>
-          <div class="rank-box">
-            <span dir="rtl" class="lead"> تاریخ</span>
-            <span dir="rtl" class="lead">امتیاز imdb</span>
+        <div className="col-2">
+          <div className="rank-box-container">
+            <span dir="rtl" className="lead">رتبه‌بندی بر اساس:</span>
+            <div className="rank-box">
+              <span dir="rtl" className="lead"> تاریخ</span>
+              <span dir="rtl" className="lead">امتیاز imdb</span>
+            </div>
           </div>
         </div>
-      </div>
 
       </div>
     </div>
