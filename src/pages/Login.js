@@ -1,7 +1,41 @@
 import './Login.css';
 import logo from '../images/logo.png'
+import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Login() {
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const from = location.state?.from || '/movies';
+    try {
+      const data = {username, password};
+
+      const response = await axios.post('/auth/login/', data);
+
+      if(response.data.status){
+        localStorage.setItem('userLoggedIn', true);
+        localStorage.setItem('userId', username);
+        navigate(from, { replace: true });
+      }
+      else{
+        //TODO: handle false auth
+      }
+
+    }catch (e) {
+      console.log(e);
+    }
+
+
+
+  }
+
   return (
     <>
     <div className="floating-card">
