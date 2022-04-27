@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import MoviePreview from '../components/MoviePreview';
 import './Movies.css';
 
@@ -20,6 +20,66 @@ const dateCompare = (a, b) => {
 export default function Movies() {
 
   const [movies, setMovies] = useState();
+  const [fetchedMovies, setFetchedMovies] = useState();
+
+
+  const [filterBy, setFilterBy] = useState();
+  const [searchValue, setSearchValue] = useState('');
+
+  const location = useLocation();
+
+
+  const filterName = item => {
+    return item.name.includes(searchValue);
+  }
+
+  const filterGenre = item => {
+    for (var genre in item.genres) {
+      if (genre.includes(searchValue))
+        return true;
+    }
+    return false;
+  }
+
+  const filterDate = item => {
+    return item.releaseDate.includes(searchValue);
+  }
+
+  const getFilterFunc = filterMode => {
+    if (filterMode === 'name')
+      return filterName;
+
+    if (filterMode === 'genre')
+      return filterGenre;
+
+    if (filterMode === 'date')
+      return filterDate;
+  }
+
+  useEffect(() => {
+    if (location.search) {
+      const searchText = location.search;
+      console.log(searchText);
+      const pairs = searchText.split('&');
+
+      const filter = pairs[0].split('=')[1];
+      const value = pairs[1].split('=')[1];
+
+      console.log({ filter, value });
+
+      setFilterBy(filter);
+      setSearchValue(value);
+    }
+  }, [location.search]);
+
+  useEffect(() => {
+    if (!fetchedMovies || !movies)
+      return
+    let newMovies = fetchedMovies.slice();
+    newMovies = newMovies.filter(getFilterFunc(filterBy));
+
+    setMovies(newMovies);    
+  }, [filterBy, searchValue]);
 
   const handleSort = basedOn => {
     let compareFunction;
@@ -40,6 +100,7 @@ export default function Movies() {
         const response = await axios.get('movies');
         const movieList = response.data.content;
         setMovies(movieList);
+        setFetchedMovies(movieList);
       } catch (e) {
         console.log(e)
       }
@@ -70,8 +131,8 @@ export default function Movies() {
           <div className="rank-box-container">
             <span dir="rtl" className="lead">رتبه‌بندی بر اساس:</span>
             <div className="rank-box">
-              <span dir="rtl" className="lead" onClick={() => {handleSort('date')}}> تاریخ</span>
-              <span dir="rtl" className="lead" onClick={() => {handleSort('rate')}}>امتیاز imdb</span>
+              <span dir="rtl" className="lead" onClick={() => { handleSort('date') }}> تاریخ</span>
+              <span dir="rtl" className="lead" onClick={() => { handleSort('rate') }}>امتیاز imdb</span>
             </div>
           </div>
         </div>

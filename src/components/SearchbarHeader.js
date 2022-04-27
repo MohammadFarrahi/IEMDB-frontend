@@ -1,9 +1,22 @@
 import { useState } from "react"
+import { useSearchParams } from "react-router-dom";
 
 export default function SearchbarHeader() {
 
-  const [mode, setMode] = useState('');
-  
+  const [filterBy, setFilterBy] = useState('name');
+  const [searchValue, setSearchValue] = useState('');
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  // const searchParam = 
+
+  const handleSearchSubmit = e => {
+    e.preventDefault();
+    setSearchParams({
+      filterBy, 
+      searchValue
+    })
+  } 
+
 
   return (
     <>
@@ -13,19 +26,42 @@ export default function SearchbarHeader() {
           <span className="dropdown-text" dir="rtl">جستجو بر اساس:</span>
         </button>
         <div className="sort-by-menu dropdown-menu " aria-labelledby="dropdownMenuButton">
-          <a className="menu-item dropdown-item " href="#">نام</a>
-          <a className="menu-item dropdown-item " href="#">ژانر</a>
-          <a className="menu-item dropdown-item " href="#">تاریخ تولید</a>
+          <div className="menu-item dropdown-item "
+            onClick={() => { setFilterBy('name'); }}
+          >
+            <span>نام</span>
+          </div>
+          <div className="menu-item dropdown-item "
+            onClick={() => { setFilterBy('genre'); }}
+          >
+            <span>ژانر</span>
+          </div>
+          <div className="menu-item dropdown-item "
+            onClick={() => { setFilterBy('date'); }}
+          >
+            <span>تاریخ تولید</span>
+          </div>
         </div>
       </div>
 
       <div className="search-input-container">
-        <form>
+        <form onSubmit={handleSearchSubmit}>
           <div className="input-group md-form form-sm form-2 pl-0">
-            <input className="form-control my-0 py-1 amber-border" type="text" placeholder="Search" aria-label="Search" />
-            <div className="input-group-append">
-              <span className="search-icon input-group-text amber " id="basic-text1"><i className="iconify-inline"
-                data-icon="carbon:search" aria-hidden="true"></i></span>
+            <input
+              value={searchValue}
+              onChange={e => { setSearchValue(e.target.value); }}
+              className="form-control my-0 py-1 amber-border"
+              type="text"
+              placeholder="Search"
+              aria-label="Search"
+            />
+
+            <div
+              className="input-group-append">
+              <button className="btn btn-danger p-0" type="submit">
+                <span className="search-icon input-group-text amber m-0" id="basic-text1"><i className="iconify-inline"
+                  data-icon="carbon:search" aria-hidden="true"></i></span>
+              </button>
             </div>
           </div>
         </form>
