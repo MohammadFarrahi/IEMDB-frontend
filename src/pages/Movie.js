@@ -138,7 +138,7 @@ export default function Movie() {
                   <span>بازیگران</span>
                   <div className="actor-circle-container">
                     {movie.cast.map(item => (
-                      <Link key={item.id} to={'/actors/' + item.id}>
+                      <Link className="mx-4" key={item.id} to={'/actors/' + item.id}>
                         <img
                           src={item.imgUrl}
                           className="rounded-circle"
