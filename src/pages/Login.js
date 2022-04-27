@@ -9,11 +9,14 @@ export default function Login() {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const [error, setError] = useState('');
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setError('');
     const from = location.state?.from || '/movies';
     try {
       const data = { email, password };
@@ -25,12 +28,9 @@ export default function Login() {
         localStorage.setItem('userId', email);
         navigate(from, { replace: true });
       }
-      else {
-        //TODO: handle false auth
-      }
 
     } catch (e) {
-      console.log(e);
+      setError('ایمیل یا رمز عبور صحیح نیست')
     }
 
 
@@ -75,6 +75,11 @@ export default function Login() {
               />
               <label className="form-label" for="form2Example22">رمز عبور</label>
             </div>
+            {error &&
+              <div className="text-center pt-1 mb-5 pb-1">
+                <span className='text-danger'>{error}</span>
+              </div>
+            }
             <div className="text-center pt-1 mb-5 pb-1">
               <button className="btn btn-danger btn-block fa-lg gradient-custom-2 mb-3" type="submit">ورود</button>
             </div>
