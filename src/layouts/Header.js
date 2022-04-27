@@ -4,7 +4,7 @@ import './Dropdown.css';
 import logo from '../images/logo.png';
 import HeaderProfile from './HeaderProfile';
 import SearchbarHeader from '../components/SearchbarHeader';
-import { useMatch } from 'react-router-dom';
+import { Link, useMatch } from 'react-router-dom';
 
 export default function Header() {
 
@@ -14,7 +14,10 @@ export default function Header() {
 
         <div className="row m-0 justify-content-md-center">
           <div className="col-1 navbar-header p-0">
-            <img src={logo} className="icon img-responsive" alt="Logo" />
+            <Link to='/movies'>
+
+              <img src={logo} className="icon img-responsive" alt="Logo" />
+            </Link>
           </div>
           <div className="col-10 search-bar-container">
             {useMatch('/movies') &&
