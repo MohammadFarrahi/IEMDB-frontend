@@ -25,34 +25,34 @@ export default function Actor() {
   return (
     <>
       {actor &&
-        <div class="container-fluid actor-container p-0">
-          <div class="row m-0">
-            <div class="col-md-4 col-12 m-0 p-0 actor-picture">
+        <div className="container-fluid actor-container p-0">
+          <div className="row m-0">
+            <div className="col-md-4 col-12 m-0 p-0 actor-picture">
               <img src={actor.imgUrl} alt={actor.name} />
             </div>
-            <div class="col-md-8 col-12 actor-detail-container">
-              <div class="actor-info-container m-2">
-                <header class="my-3">مشخصات بازیگر</header>
-                <div class="actor-info my-4">
-                  <div class="info-item">{actor.name}</div>
-                  <div class="info-item">{actor.birthDate}</div>
-                  <div class="info-item">{actor.nationality}</div>
-                  <div class="info-item">{actor.performedMovies.length}</div>
+            <div className="col-md-8 col-12 actor-detail-container">
+              <div className="actor-info-container m-2">
+                <header className="my-3">مشخصات بازیگر</header>
+                <div className="actor-info my-4">
+                  <div className="info-item">{actor.name} :نام </div>
+                  <div className="info-item">{actor.birthDate} :تاریخ تولد</div>
+                  <div className="info-item">{actor.nationality} :محصول کشور</div>
+                  <div className="info-item">{actor.performedMovies.length} :تعداد فیلم ها</div>
                 </div>
               </div>
-              <div class="actor-movies-container">
-                <header class="my-3">فیلم ها</header>
-                <div class="card-container container">
-                  <div class="row p-0 m-0">
+              <div className="actor-movies-container">
+                <header className="my-3">فیلم ها</header>
+                <div className="card-container container">
+                  <div className="row p-0 m-0">
                     {actor.performedMovies.map(movie => (
-                      <div class="col-4" key={movie.id}>
+                      <div className="col-4" key={movie.id}>
                         <Link to={'/movies/' + movie.id}>
 
-                          <div class="movie-picture">
-                            <img src={movie.coverImgUrl} class="img-rounded" alt={movie.name} />
-                            <div class="hover-cover">
-                              <span class="lead">{movie.name}</span>
-                              <span class="lead">{movie.imdbRate}</span>
+                          <div className="movie-picture">
+                            <img src={movie.coverImgUrl} className="img-rounded" alt={movie.name} />
+                            <div className="hover-cover">
+                              <span className="lead">{movie.name}</span>
+                              <span className="lead">{movie.imdbRate}</span>
                             </div>
                           </div>
                         </Link>

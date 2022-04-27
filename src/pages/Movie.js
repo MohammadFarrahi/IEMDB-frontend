@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom"
 import Comment from "../components/Comment";
 import CommentForm from "../components/CommentForm";
+import RateMovie from "../components/RateMovie";
 
-import './Movie.css'
+import './Movie.css';
 
 
 export default function Movie() {
@@ -86,14 +87,15 @@ export default function Movie() {
                 <div className="col-6 p-0">
                   <div className="movie-header-info">
                     <span className="justify-left">{movie.name}</span>
-                    <span className="justify-right">{movie.director}</span>
+                    <span className="justify-right">کارگردان: {movie.director}</span>
                     <span className="justify-right">
-                      {movie.writers}
+                    نویسنده: {movie.writers.join(', ')}
                     </span>
-                    <span className="justify-right">{movie.duration}</span>
+                    <span className="justify-right">مدت زمان: {movie.duration} دقیقه</span>
                   </div>
                   <div className="movie-header-info">
-                    <span className="justify-left">{movie.releaseDate}</span>
+                    <span className="justify-left">تاریخ انتشار: {movie.releaseDate}</span>
+                    <span className="justify-left">محدودیت سنی: {movie.ageLimit} سال</span>
                     <hr className="divider" />
                     <span className="justify-justified">{movie.summary}</span>
                   </div>
@@ -103,6 +105,7 @@ export default function Movie() {
                     <span className="lead text-center movie-rate">{movie.imdbRate}</span>
                     <div className="user-rate-info">
                       <span className="rate-title">امتیاز کاربران</span>
+                      <RateMovie userRate={movie.userRate}/>
                       <span className="rate-value">{movie.averageRating}</span>
                       <span className="rate-count">{movie.rateCount}</span>
                     </div>
