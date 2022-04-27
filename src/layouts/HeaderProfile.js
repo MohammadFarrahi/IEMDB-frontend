@@ -1,6 +1,7 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './HeaderProfile.css';
 import './Dropdown.css';
+import axios from 'axios';
 
 
 export default function HeaderProfile() {
@@ -8,7 +9,21 @@ export default function HeaderProfile() {
   var userId = localStorage.getItem('userId');
 
   const location = useLocation();
+  const navigate = useNavigate();
 
+  const handleLogout = async () => {
+    try {
+      const response = await axios.post('/auth/logout');
+      console.log(response)
+      if (response.data.status) {
+        localStorage.removeItem('userLoggedIn');
+        localStorage.removeItem('userId');
+        navigate('/movies');
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  }
 
   return (
     <div className="dropdown porfile-dropdown-contianer">
@@ -23,6 +38,12 @@ export default function HeaderProfile() {
           <>
             <span className="menu-item dropdown-item ">{userId}</span>
             <Link className="menu-item dropdown-item " to='/watchlist'>watch list</Link>
+            <div
+              onClick={handleLogout}
+              className="menu-item dropdown-item"
+            >
+              <span>Logout</span>
+            </div>
           </>
           :
           <>
