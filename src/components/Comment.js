@@ -9,7 +9,7 @@ export default function Comment(props) {
     try {
       const data = { vote };
       const response = await axios.post('/comments/' + comment.id + '/vote/', data);
-      let newComment = response.data;
+      let newComment = response.data.content;
       updateComment(newComment);
     } catch (e) {
       console.log(e);

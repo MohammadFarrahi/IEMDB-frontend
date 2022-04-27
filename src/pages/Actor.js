@@ -12,7 +12,7 @@ export default function Actor() {
     async function fetchData() {
       try {
         const response = await axios.get('actors/' + id);
-        const actorRes = response.data;
+        const actorRes = response.data.content;
         setActor(actorRes);
       } catch (e) {
         console.log(e)

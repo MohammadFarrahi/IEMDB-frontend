@@ -14,7 +14,7 @@ export default function Watchlist() {
       try {
         const loggedInUser = localStorage.getItem('userId');
         const response = await axios.get('users/' + loggedInUser + '/watchlist' + id);
-        const watchlist = response.data;
+        const watchlist = response.data.content;
         setWatchlist(watchlist);
       } catch (e) {
         console.log(e)

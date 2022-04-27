@@ -38,7 +38,7 @@ export default function Movies() {
     async function fetchData() {
       try {
         const response = await axios.get('movies');
-        const movieList = response.data;
+        const movieList = response.data.content;
         setMovies(movieList);
       } catch (e) {
         console.log(e)
