@@ -8,8 +8,6 @@ import { useMatch } from 'react-router-dom';
 
 export default function Header() {
 
-  const isLoggedIn = localStorage.getItem('userLoggedIn');
-
   return (
     <nav className="navbar">
       <div className="container-fluid p-0 nav-container">

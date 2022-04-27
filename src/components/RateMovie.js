@@ -20,7 +20,7 @@ export default function RateMovie(props) {
       }
 
     }catch(e) {
-
+      console.log(e);
     }
   }
 

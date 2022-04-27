@@ -1,5 +1,9 @@
+import { useState } from "react"
 
 export default function SearchbarHeader() {
+
+  const [mode, setMode] = useState('');
+  
 
   return (
     <>
@@ -27,6 +31,6 @@ export default function SearchbarHeader() {
         </form>
       </div>
     </>
-  
+
   )
 }
