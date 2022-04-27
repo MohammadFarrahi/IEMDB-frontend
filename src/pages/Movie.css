@@ -81,30 +81,6 @@
   font-weight: lighter;
 }
 
-.rate-stars-container {
-  width: max-content;
-  border-radius: 20px;
-  background-color: var(--transparent-primary-color);
-  position: absolute;
-  top: 14vh;
-  right: 8vw;
-}
-
-.rate-star {
-  font-size: 2.5rem;
-  margin: 0;
-  padding: 0;
-}
-
-.rate-star.active {
-  color: yellow;
-}
-
-.rate-star.deactive {
-  color: grey;
-}
-
-
 .movie-header-info {
   margin-bottom: 50px;
 }

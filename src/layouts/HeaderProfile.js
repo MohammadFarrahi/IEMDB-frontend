@@ -13,11 +13,10 @@ export default function HeaderProfile() {
 
   const handleLogout = async () => {
     try {
+      localStorage.removeItem('userLoggedIn');
+      localStorage.removeItem('userId');
       const response = await axios.post('/auth/logout');
-      console.log(response)
       if (response.data.status) {
-        localStorage.removeItem('userLoggedIn');
-        localStorage.removeItem('userId');
         navigate('/movies');
       }
     } catch (e) {

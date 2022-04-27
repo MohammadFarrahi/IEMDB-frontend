@@ -1,0 +1,27 @@
+
+.rate-stars-container {
+  width: max-content;
+  border-radius: 20px;
+  background-color: var(--transparent-primary-color);
+  position: absolute;
+  top: 14vh;
+  right: 25vw;
+}
+
+.rate-star {
+  display: inline-block;
+}
+
+.star-icon{
+  font-size: 2.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.star-icon.active {
+  color: yellow;
+}
+
+.star-icon.deactive {
+  color: grey;
+}
