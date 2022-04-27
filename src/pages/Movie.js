@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import Comment from "../components/Comment";
 import CommentForm from "../components/CommentForm";
 
@@ -13,6 +13,9 @@ export default function Movie() {
   const { id } = useParams();
 
   const isLoggedIn = localStorage.getItem('userLoggedIn');
+  const userId = localStorage.getItem('userId');
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
@@ -32,14 +35,25 @@ export default function Movie() {
   const updateComment = editedComment => {
     const commentIndex = movie.comments.findIndex(x => x.id === editedComment.id);
     movie.comments[commentIndex] = editedComment;
-    setMovie({...movie});
+    setMovie({ ...movie });
   }
 
   const addComment = newComment => {
     movie.comments.push(newComment);
-    setMovie({...movie});
+    setMovie({ ...movie });
   }
 
+  const handleAddToWatchlist = async () => {
+    try {
+      const data = {movieId: movie.id}
+      const response = await axios.post('/users/' + userId + '/watchlist/', data);
+      if(response.data.status){
+        navigate('/watchlist/');
+      }
+    }catch (e) {
+      console.log(e)
+    }
+  }
 
   return (
     <>
@@ -60,7 +74,12 @@ export default function Movie() {
                 <div className="col-3 movie-header-img">
                   <img src={movie.imgUrl} />
                   {isLoggedIn &&
-                  <button className="btn btn-danger">افزودن به لیست</button>
+                    <button
+                      onClick={handleAddToWatchlist}
+                      className="btn btn-danger"
+                    >
+                      افزودن به لیست
+                    </button>
 
                   }
                 </div>
@@ -107,9 +126,9 @@ export default function Movie() {
                 </div>
                 <div className="card-container">
                   <span>دیدگاه‌ها</span>
-                  <CommentForm addComment={addComment} movieId={movie.id}/>
+                  <CommentForm addComment={addComment} movieId={movie.id} />
                   {movie.comments.map(comment => (
-                    <Comment key={comment.id} comment={comment} updateComment={updateComment}/>
+                    <Comment key={comment.id} comment={comment} updateComment={updateComment} />
                   ))}
                 </div>
               </div>
