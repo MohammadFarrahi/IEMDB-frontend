@@ -1,12 +1,14 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import './Actor.css'
 
 export default function Actor() {
 
   const { id } = useParams();
   const [actor, setActor] = useState();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchData() {
@@ -15,7 +17,9 @@ export default function Actor() {
         const actorRes = response.data.content;
         setActor(actorRes);
       } catch (e) {
-        console.log(e)
+        if(e.response.status === 404) {
+          navigate('/404');
+        }
       }
     }
     fetchData();

@@ -27,7 +27,9 @@ export default function Movie() {
         const movieRes = response.data.content;
         setMovie(movieRes);
       } catch (e) {
-        console.log(e)
+        if(e.response.status === 404) {
+          navigate('/404');
+        }
       }
     }
     fetchData();

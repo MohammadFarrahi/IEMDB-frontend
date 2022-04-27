@@ -18,6 +18,7 @@ export default function Router() {
       <Route path='/signup' element={<Signup />} />
       <Route element={<Layout />}>
         <Route path='/movies' element={<Movies />} />
+        <Route path='/404' element={<NotFound404 />} />
         <Route path='/movies/:id' element={<Movie />} />
         <Route path='/actors/:id' element={<Actor />} />
         {/* Protected Pages */}
