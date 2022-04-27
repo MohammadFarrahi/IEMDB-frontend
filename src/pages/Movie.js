@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom"
+import CommentForm from "../components/CommentForm";
 
 import './Movie.css'
 
@@ -117,7 +118,6 @@ export default function Movie() {
                   <div className="actor-circle-container">
                     {movie.cast.map(item => (
                       <Link to={'/actors/' + item.id}>
-
                         <img
                           key={item.id}
                           src={item.imgUrl}
@@ -130,15 +130,7 @@ export default function Movie() {
                 </div>
                 <div className="card-container">
                   <span>دیدگاه‌ها</span>
-                  <div className="vote-container">
-                    <span className="title">دیدگاه خود را اضافه کنید:</span>
-                    <hr className="divider" />
-                    <input />
-                    <button className="d-block btn btn-success btn-lg px-5 mx-4">
-                      ثبت
-                    </button>
-                  </div>
-
+                  <CommentForm />
                   {movie.comments.map(comment => (
                     <div className="vote-container" key={comment.id}>
                       <span className="title">{comment.commentOwnerName}</span>
