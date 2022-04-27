@@ -9,20 +9,20 @@ export default function Login() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = async (e) => {
     e.preventDefault();
     const from = location.state?.from || '/movies';
     try {
-      const data = { username, password };
+      const data = { email, password };
 
       const response = await axios.post('/auth/login/', data);
 
       if (response.data.status) {
         localStorage.setItem('userLoggedIn', true);
-        localStorage.setItem('userId', username);
+        localStorage.setItem('userId', email);
         navigate(from, { replace: true });
       }
       else {
@@ -60,7 +60,7 @@ export default function Login() {
                 type="email"
                 id="form2Example11"
                 className="form-control"
-                onChange={e => { setUsername(e.target.value) }}
+                onChange={e => { setEmail(e.target.value) }}
               />
               <label className="form-label" for="form2Example11">نام کاربری</label>
             </div>
