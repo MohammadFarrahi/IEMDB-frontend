@@ -41,7 +41,7 @@ export default function Watchlist() {
 
   return (
     <>
-      {watchlist && recommendList &&
+      {(watchlist && recommendList) ?
         <>
           <div className="watchlist-container">
             {watchlist.map(item => (
@@ -67,7 +67,12 @@ export default function Watchlist() {
             </div>
           </div>
 
-        </>
+        </> :
+        <div class="text-center mt-5">
+          <div class="spinner-border text-danger" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
       }
     </>
   )

@@ -24,7 +24,7 @@ export default function Actor() {
 
   return (
     <>
-      {actor &&
+      {actor ?
         <div className="container-fluid actor-container p-0">
           <div className="row m-0">
             <div className="col-md-4 col-12 m-0 p-0 actor-picture">
@@ -63,6 +63,12 @@ export default function Actor() {
 
               </div>
             </div>
+          </div>
+        </div>
+        :
+        <div class="text-center mt-5">
+          <div class="spinner-border text-danger" role="status">
+            <span class="sr-only">Loading...</span>
           </div>
         </div>
       }

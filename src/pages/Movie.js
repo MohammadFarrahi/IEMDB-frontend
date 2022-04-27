@@ -49,24 +49,24 @@ export default function Movie() {
     movie.rateCount = newMovie.rateCount;
     movie.averageRating = newMovie.averageRating;
 
-    setMovie({...movie});
+    setMovie({ ...movie });
   }
 
   const handleAddToWatchlist = async () => {
     try {
-      const data = {movieId: movie.id}
+      const data = { movieId: movie.id }
       const response = await axios.post('/users/' + userId + '/watchlist/', data);
-      if(response.data.status){
+      if (response.data.status) {
         navigate('/watchlist/');
       }
-    }catch (e) {
+    } catch (e) {
       console.log(e)
     }
   }
 
   return (
     <>
-      {movie &&
+      {movie ?
         <div className="container-fluid p-0">
           <div className="row m-0">
             <div className="col-12 header-img-container">
@@ -97,7 +97,7 @@ export default function Movie() {
                     <span className="justify-left">{movie.name}</span>
                     <span className="justify-right">کارگردان: {movie.director}</span>
                     <span className="justify-right">
-                    نویسنده: {movie.writers.join(', ')}
+                      نویسنده: {movie.writers.join(', ')}
                     </span>
                     <span className="justify-right">مدت زمان: {movie.duration} دقیقه</span>
                   </div>
@@ -113,7 +113,7 @@ export default function Movie() {
                     <span className="lead text-center movie-rate">{movie.imdbRate}</span>
                     <div className="user-rate-info">
                       <span className="rate-title">امتیاز کاربران</span>
-                      <RateMovie updateRate={updateRate} userRate={movie.userRate} movieId={movie.id}/>
+                      <RateMovie updateRate={updateRate} userRate={movie.userRate} movieId={movie.id} />
                       <span className="rate-value">{movie.averageRating}</span>
                       <span className="rate-count">{movie.rateCount}</span>
                     </div>
@@ -147,7 +147,12 @@ export default function Movie() {
             <div className="col-2"></div>
           </div>
         </div>
-
+        :
+        <div class="text-center mt-5">
+          <div class="spinner-border text-danger" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
       }
 
     </>
