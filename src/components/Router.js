@@ -7,10 +7,12 @@ import Movie from "../pages/Movie";
 import Movies from "../pages/Movies";
 import Watchlist from "../pages/Watchlist";
 import ProtectedPages from "./ProtectedPages";
+import NotFound404 from "../pages/NotFound404";
 
 export default function Router() {
   return (
     <Routes>
+      <Route path='*' element={<NotFound404 />} />
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<Signup />} />
       <Route element={<Layout />}>
