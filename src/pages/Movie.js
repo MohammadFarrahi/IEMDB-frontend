@@ -27,9 +27,14 @@ export default function Movie() {
   }, [])
 
 
-  const updateComment = newComment => {
-    const commentIndex = movie.comments.findIndex(x => x.id === newComment.id);
-    movie.comments[commentIndex] = newComment;
+  const updateComment = editedComment => {
+    const commentIndex = movie.comments.findIndex(x => x.id === editedComment.id);
+    movie.comments[commentIndex] = editedComment;
+    setMovie({...movie});
+  }
+
+  const addComment = newComment => {
+    movie.comments.push(newComment);
     setMovie({...movie});
   }
 
@@ -96,7 +101,7 @@ export default function Movie() {
                 </div>
                 <div className="card-container">
                   <span>دیدگاه‌ها</span>
-                  <CommentForm movieId={movie.id}/>
+                  <CommentForm addComment={addComment} movieId={movie.id}/>
                   {movie.comments.map(comment => (
                     <Comment key={comment.id} comment={comment} updateComment={updateComment}/>
                   ))}

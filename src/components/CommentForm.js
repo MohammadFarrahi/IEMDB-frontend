@@ -3,16 +3,19 @@ import { useState } from "react";
 
 export default function CommentForm(props) {
 
-  const {movieId} = props;
+  const { movieId, addComment } = props;
 
   const isLoggedIn = localStorage.getItem('userLoggedIn');
 
   const [commentText, setCommentText] = useState('');
   const handleSubmit = async e => {
+    e.preventDefault();
     try {
-      const data = {commentMovieId: movieId, text: commentText};
+      const data = { commentMovieId: movieId, text: commentText };
       const response = await axios.post('/comments/', data);
-      console.log(response);
+      const newComment = response.data.content;
+      addComment(newComment);
+      setCommentText('');
     } catch (e) {
       console.log(e);
     }
@@ -24,8 +27,9 @@ export default function CommentForm(props) {
       <hr className="divider" />
       <form onSubmit={handleSubmit}>
         <input
+          value={commentText}
           required
-          onChange={e => {setCommentText(e.target.value)}}
+          onChange={e => { setCommentText(e.target.value) }}
         />
 
         <button
