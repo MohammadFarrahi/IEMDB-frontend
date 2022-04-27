@@ -3,8 +3,13 @@ import './Dropdown.css';
 
 import logo from '../images/logo.png';
 import HeaderProfile from './HeaderProfile';
+import SearchbarHeader from '../components/SearchbarHeader';
+import { useMatch } from 'react-router-dom';
 
 export default function Header() {
+
+  const isLoggedIn = localStorage.getItem('userLoggedIn');
+
   return (
     <nav className="navbar">
       <div className="container-fluid p-0 nav-container">
@@ -14,32 +19,12 @@ export default function Header() {
             <img src={logo} className="icon img-responsive" alt="Logo" />
           </div>
           <div className="col-10 search-bar-container">
-            <div className="dropdown">
-              <button className="btn btn-secondary btn-lg dropdown-toggle dropdown-btn" type="button" id="dropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span className="dropdown-text" dir="rtl">جستجو بر اساس:</span>
-              </button>
-              <div className="sort-by-menu dropdown-menu " aria-labelledby="dropdownMenuButton">
-                <a className="menu-item dropdown-item " href="#">نام</a>
-                <a className="menu-item dropdown-item " href="#">ژانر</a>
-                <a className="menu-item dropdown-item " href="#">تاریخ تولید</a>
-              </div>
-            </div>
-
-            <div className="search-input-container">
-              <form>
-                <div className="input-group md-form form-sm form-2 pl-0">
-                  <input className="form-control my-0 py-1 amber-border" type="text" placeholder="Search" aria-label="Search" />
-                  <div className="input-group-append">
-                    <span className="search-icon input-group-text amber " id="basic-text1"><i className="iconify-inline"
-                      data-icon="carbon:search" aria-hidden="true"></i></span>
-                  </div>
-                </div>
-              </form>
-            </div>
+            {useMatch('/movies') &&
+              <SearchbarHeader />
+            }
           </div>
           <div className="col-1 profile-container">
-            <HeaderProfile/>
+            <HeaderProfile />
           </div>
         </div>
       </div>
