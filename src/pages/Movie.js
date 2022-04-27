@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom"
+import Comment from "../components/Comment";
 import CommentForm from "../components/CommentForm";
 
 import './Movie.css'
@@ -62,48 +63,6 @@ export default function Movie() {
                 <div className="col-3">
                   <div className="movie-header-rate">
                     <span className="lead text-center movie-rate">{movie.imdbRate}</span>
-                    {/* <div className="rate-stars-container">
-                      <span
-                        className="iconify rate-star active"
-                        data-icon="codicon:star-full"
-                      ></span>
-                      <span
-                        className="iconify rate-star active"
-                        data-icon="codicon:star-full"
-                      ></span>
-                      <span
-                        className="iconify rate-star active"
-                        data-icon="codicon:star-full"
-                      ></span>
-                      <span
-                        className="iconify rate-star active"
-                        data-icon="codicon:star-full"
-                      ></span>
-                      <span
-                        className="iconify rate-star active"
-                        data-icon="codicon:star-full"
-                      ></span>
-                      <span
-                        className="iconify rate-star active"
-                        data-icon="codicon:star-full"
-                      ></span>
-                      <span
-                        className="iconify rate-star active"
-                        data-icon="codicon:star-full"
-                      ></span>
-                      <span
-                        className="iconify rate-star deactive"
-                        data-icon="codicon:star-full"
-                      ></span>
-                      <span
-                        className="iconify rate-star deactive"
-                        data-icon="codicon:star-full"
-                      ></span>
-                      <span
-                        className="iconify rate-star deactive"
-                        data-icon="codicon:star-full"
-                      ></span>
-                    </div> */}
                     <div className="user-rate-info">
                       <span className="rate-title">امتیاز کاربران</span>
                       <span className="rate-value">{movie.averageRating}</span>
@@ -117,9 +76,8 @@ export default function Movie() {
                   <span>بازیگران</span>
                   <div className="actor-circle-container">
                     {movie.cast.map(item => (
-                      <Link to={'/actors/' + item.id}>
+                      <Link key={item.id} to={'/actors/' + item.id}>
                         <img
-                          key={item.id}
                           src={item.imgUrl}
                           className="rounded-circle"
                           alt={item.name}
@@ -132,29 +90,7 @@ export default function Movie() {
                   <span>دیدگاه‌ها</span>
                   <CommentForm movieId={movie.id}/>
                   {movie.comments.map(comment => (
-                    <div className="vote-container" key={comment.id}>
-                      <span className="title">{comment.commentOwnerName}</span>
-                      <hr className="divider" />
-                      <div className="vote-body">
-                        <div className="vote-icon-container">
-                          <span
-                            className="iconify down-vote icon"
-                            data-icon="akar-icons:circle-chevron-down-fill"
-                          ></span>
-                          <span>{comment.commentDislikes}</span>
-                        </div>
-                        <div className="vote-icon-container">
-                          <span
-                            className="iconify up-vote icon"
-                            data-icon="akar-icons:circle-chevron-up-fill"
-                          ></span>
-                          <span>{comment.commentLikes}</span>
-                        </div>
-                        <div className="vote-text">
-                          <span>{comment.text}</span>
-                        </div>
-                      </div>
-                    </div>
+                    <Comment key={comment.id} comment={comment}/>
                   ))}
                 </div>
               </div>

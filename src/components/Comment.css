@@ -1,0 +1,70 @@
+.vote-container {
+  border-radius: 40px;
+  margin: 20px auto;
+  width: 80%;
+  background-color: white;
+  padding: 20px;
+}
+
+.vote-container span.title {
+  display: block;
+  width: 100%;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 1.2rem;
+  direction: rtl;
+  text-align: right;
+}
+
+.vote-container input {
+  border: none;
+  display: block;
+  width: 95%;
+  margin: 20px auto;
+  padding: 10px 5px;
+  direction: rtl;
+  background-color: rgba(221,221,221, 0.7);
+  border-radius: 15px;
+  font-size: 1.4rem;
+}
+
+.vote-body {
+  display: flex;
+}
+
+.vote-body .vote-text {
+  width: 90%;
+}
+
+.vote-body .vote-text span {
+  color: black;
+  text-align: right;
+  direction: rtl;
+  font-size: 1.2rem;
+  font-weight: normal;
+  padding-right: 40px;
+}
+
+.vote-body .vote-icon-container {
+  width: 5%;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vote-icon-container span {
+  display: block;
+  color: black !important;
+}
+
+.vote-icon-container .icon {
+  font-size: 2.5rem;
+}
+
+.vote-icon-container .icon.up-vote {
+  color: green;
+}
+
+.vote-icon-container .icon.down-vote {
+  color: red;
+}
