@@ -45,9 +45,9 @@ export default function Actor() {
                 <div class="card-container container">
                   <div class="row p-0 m-0">
                     {actor.performedMovies.map(movie => (
-                      <Link to={'/movies/' + movie.id}>
+                      <div class="col-4" key={movie.id}>
+                        <Link to={'/movies/' + movie.id}>
 
-                        <div class="col-4 p-0" key={movie.id}>
                           <div class="movie-picture">
                             <img src={movie.coverImgUrl} class="img-rounded" alt={movie.name} />
                             <div class="hover-cover">
@@ -55,8 +55,8 @@ export default function Actor() {
                               <span class="lead">{movie.imdbRate}</span>
                             </div>
                           </div>
-                        </div>
-                      </Link>
+                        </Link>
+                      </div>
                     ))}
                   </div>
                 </div>
