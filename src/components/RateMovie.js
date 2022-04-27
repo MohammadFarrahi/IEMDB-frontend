@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './RateMovie.css'
 import RateStar from './RateStar';
 
@@ -15,14 +15,21 @@ export default function RateMovie(props) {
       const response = await axios.post('/movies/' + movieId + '/rate/', data);
 
       if(response.data.status){
-        console.log(response.data.content);
         updateRate(response.data.content);
+        handleHover(rate)
       }
 
     }catch(e) {
 
     }
   }
+
+  useEffect(() => {
+    if(userRate) {
+
+      handleHover(userRate);
+    }
+  }, [])
 
   const handleHover = position => {
     stars.map((star, index) => { 
