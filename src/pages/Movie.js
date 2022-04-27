@@ -26,6 +26,14 @@ export default function Movie() {
 
   }, [])
 
+
+  const updateComment = newComment => {
+    const commentIndex = movie.comments.findIndex(x => x.id === newComment.id);
+    movie.comments[commentIndex] = newComment;
+    setMovie({...movie});
+  }
+
+
   return (
     <>
       {movie &&
@@ -90,7 +98,7 @@ export default function Movie() {
                   <span>دیدگاه‌ها</span>
                   <CommentForm movieId={movie.id}/>
                   {movie.comments.map(comment => (
-                    <Comment key={comment.id} comment={comment}/>
+                    <Comment key={comment.id} comment={comment} updateComment={updateComment}/>
                   ))}
                 </div>
               </div>
