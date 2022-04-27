@@ -12,6 +12,8 @@ export default function Movie() {
   const [movie, setMovie] = useState();
   const { id } = useParams();
 
+  const isLoggedIn = localStorage.getItem('userLoggedIn');
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -57,6 +59,10 @@ export default function Movie() {
               <div className="row">
                 <div className="col-3 movie-header-img">
                   <img src={movie.imgUrl} />
+                  {isLoggedIn &&
+                  <button className="btn btn-danger">افزودن به لیست</button>
+
+                  }
                 </div>
                 <div className="col-6 p-0">
                   <div className="movie-header-info">
