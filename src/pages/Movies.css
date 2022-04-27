@@ -45,5 +45,5 @@
 }
 
 .rank-box span:hover {
-  background-color: rgba(177, 32, 37, .9);
+  background-color: var(--transparent-secondary-color);
 }
