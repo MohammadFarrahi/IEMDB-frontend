@@ -31,7 +31,13 @@ export default function Watchlist() {
     }
     fetchData();
 
-  }, [])
+  }, []);
+
+  const deleteFromWatchlist = movie => {
+    const movieIndex = watchlist.findIndex(x => x.id === movie.id);
+    watchlist.splice(movieIndex, 1);
+    setWatchlist(watchlist.slice());
+  };
 
   return (
     <>
@@ -39,7 +45,7 @@ export default function Watchlist() {
         <>
           <div className="watchlist-container">
             {watchlist.map(item => (
-              <WatchlistCard movie={item} />
+              <WatchlistCard deleteFromWatchlist={deleteFromWatchlist} movie={item} />
             ))}
           </div>
 

@@ -1,7 +1,20 @@
+import axios from "axios";
 
 
 export default function WatchlistCard(props) {
-  const { movie } = props;
+  const { movie, deleteFromWatchlist } = props;
+
+  const handleDeleteFromList = async () => {
+    try {
+      const userId = localStorage.getItem('userId');
+      const response = await axios.delete('/users/' + userId + '/watchlist/' + movie.id);
+      if(response.data.status){
+        deleteFromWatchlist(movie);
+      }
+    }catch (e) {
+
+    }
+  }
 
   return (
     <div className="container p-0 wl-movie-card">
@@ -18,7 +31,9 @@ export default function WatchlistCard(props) {
         <div className="col-9 pr-0">
           <div className="wl-movie-header">
             <span className="wl-movie-header-title"> {movie.name} </span>
-            <div>
+            <div
+              onClick={handleDeleteFromList}
+            >
               <span
                 className="iconify wl-movie-header-icon"
                 data-icon="ri:delete-bin-7-fill"
@@ -34,25 +49,25 @@ export default function WatchlistCard(props) {
                 </div>
                 <div className="info-line">
                   <span><strong>امتیاز کاربران:</strong></span>
-                  <span>9.9</span>
+                  <span>{movie.averageRating || 0}</span>
                 </div>
               </div>
               <div className="col-6">
                 <div className="info-line">
                   <span><strong>کارگردان:</strong></span>
-                  <span>Folan Folan</span>
+                  <span>{movie.director}</span>
                 </div>
                 <div className="info-line">
                   <span><strong>ژانر:</strong></span>
-                  <span>فانتزی - تخیلی</span>
+                  <span>{movie.genres.join(' - ')}</span>
                 </div>
                 <div className="info-line">
                   <span><strong>تاریخ انتشار:</strong></span>
-                  <span>2001/02/2</span>
+                  <span>{movie.releaseDate}</span>
                 </div>
                 <div className="info-line">
                   <span><strong>مدت زمان:</strong></span>
-                  <span>180 دقیقه</span>
+                  <span>{movie.duration} دقیقه</span>
                 </div>
               </div>
             </div>
