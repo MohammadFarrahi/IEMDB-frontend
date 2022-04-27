@@ -17,7 +17,7 @@ export default function Router() {
         <Route path='/actors/:id' element={<Actor />} />
         {/* Protected Pages */}
         <Route element={<ProtectedPages />}>
-
+          <Route path='/watchlist' element={<Watchlist />} />
         </Route>
       </Route>
     </Routes>
