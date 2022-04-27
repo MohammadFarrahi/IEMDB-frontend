@@ -72,13 +72,13 @@
 }
 
 .user-rate-info .rate-value {
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 .user-rate-info .rate-count {
   direction: rtl;
   text-align: right;
-  font-weight: lighter;
+  font-weight: light;
 }
 
 .movie-header-info {

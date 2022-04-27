@@ -13,6 +13,8 @@ export default function Movie() {
   const [movie, setMovie] = useState();
   const { id } = useParams();
 
+  const [error, setError] = useState('');
+
   const isLoggedIn = localStorage.getItem('userLoggedIn');
   const userId = localStorage.getItem('userId');
 
@@ -54,6 +56,7 @@ export default function Movie() {
 
   const handleAddToWatchlist = async () => {
     try {
+      setError('');
       const data = { movieId: movie.id }
       const response = await axios.post('/users/' + userId + '/watchlist/', data);
       if (response.data.status) {
@@ -61,6 +64,9 @@ export default function Movie() {
       }
     } catch (e) {
       console.log(e)
+      if (e.response.data.message === 'AgeLimitError'){
+        setError('سن شما در رده سنی فیلم نیست');
+      }
     }
   }
 
@@ -83,12 +89,19 @@ export default function Movie() {
                 <div className="col-3 movie-header-img">
                   <img src={movie.imgUrl} />
                   {isLoggedIn &&
-                    <button
-                      onClick={handleAddToWatchlist}
-                      className="btn btn-danger"
-                    >
-                      افزودن به لیست
-                    </button>
+                    <>
+                      <button
+                        onClick={handleAddToWatchlist}
+                        className="btn btn-danger"
+                      >
+                        افزودن به لیست
+                      </button>
+                      {error &&
+                        <div className="text-center text-danger">
+                          <span className="lead text-danger">{error}</span>
+                        </div>
+                      }
+                    </>
 
                   }
                 </div>
@@ -115,7 +128,7 @@ export default function Movie() {
                       <span className="rate-title">امتیاز کاربران</span>
                       <RateMovie updateRate={updateRate} userRate={movie.userRate} movieId={movie.id} />
                       <span className="rate-value">{movie.averageRating}</span>
-                      <span className="rate-count">{movie.rateCount}</span>
+                      <span className="rate-count">{movie.rateCount} رای</span>
                     </div>
                   </div>
                 </div>
