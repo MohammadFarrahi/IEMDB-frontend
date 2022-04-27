@@ -6,15 +6,7 @@ import { Icon } from '@iconify/react';
 export default function RateStar(props) {
   const { onClickHandler, onHoverHandler, starActive } = props;
 
-  const [color, setColor] = useState("pink");
-
-  useEffect(() => {
-    setColor(starActive ? "yellow" : "grey");
-    console.log("FUCK")
-    console.log(color)
-  }, [starActive])
-
-  return (
+   return (
     <div
       onClick={onClickHandler}
       className="rate-star"
@@ -22,11 +14,9 @@ export default function RateStar(props) {
     >
       <Icon
         icon="codicon:star-full"
-        style={{ color: color }}
+        style={{ color: (starActive ? "yellow" : "grey") }}
         className="star-icon "
       />
-
-
     </div>
   )
 }

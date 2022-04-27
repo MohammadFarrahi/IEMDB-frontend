@@ -44,6 +44,14 @@ export default function Movie() {
     setMovie({ ...movie });
   }
 
+  const updateRate = newMovie => {
+    movie.userRate = newMovie.userRate;
+    movie.rateCount = newMovie.rateCount;
+    movie.averageRating = newMovie.averageRating;
+
+    setMovie({...movie});
+  }
+
   const handleAddToWatchlist = async () => {
     try {
       const data = {movieId: movie.id}
@@ -105,7 +113,7 @@ export default function Movie() {
                     <span className="lead text-center movie-rate">{movie.imdbRate}</span>
                     <div className="user-rate-info">
                       <span className="rate-title">امتیاز کاربران</span>
-                      <RateMovie userRate={movie.userRate}/>
+                      <RateMovie updateRate={updateRate} userRate={movie.userRate} movieId={movie.id}/>
                       <span className="rate-value">{movie.averageRating}</span>
                       <span className="rate-count">{movie.rateCount}</span>
                     </div>

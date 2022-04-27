@@ -1,15 +1,27 @@
+import axios from 'axios';
 import { useState } from 'react';
 import './RateMovie.css'
 import RateStar from './RateStar';
 
 export default function RateMovie(props) {
 
-  const {userRate} = props;
+  const {userRate, movieId, updateRate} = props;
   
   const [stars, setStars] = useState(Array(10).fill(false));
 
-  const handleRate = rate => {
-    console.log(rate)
+  const handleRate = async rate => {
+    try {
+      const data = {rate}
+      const response = await axios.post('/movies/' + movieId + '/rate/', data);
+
+      if(response.data.status){
+        console.log(response.data.content);
+        updateRate(response.data.content);
+      }
+
+    }catch(e) {
+
+    }
   }
 
   const handleHover = position => {
@@ -26,8 +38,6 @@ export default function RateMovie(props) {
     })
     setStars(stars.slice());
   }
-
-  // console.log(stars);
 
   return (
     <>
