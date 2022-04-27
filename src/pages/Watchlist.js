@@ -4,6 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react"
 import WatchlistCard from "../components/WatchlistCard";
 import MoviePreview from '../components/MoviePreview'
+import { Link } from 'react-router-dom';
 
 
 export default function Watchlist() {
@@ -49,14 +50,17 @@ export default function Watchlist() {
                 <div className="row p-3">
                   {recommendList.map(item => (
                     <div className="col-4">
-                      <MoviePreview image={item.coverImgUrl} name={item.name} rate={item.imdbRate} />
+                      <Link to={'/movies/' + item.id}>
+
+                        <MoviePreview image={item.coverImgUrl} name={item.name} rate={item.imdbRate} />
+                      </Link>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
           </div>
-          
+
         </>
       }
     </>
