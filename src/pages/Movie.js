@@ -130,7 +130,7 @@ export default function Movie() {
                 </div>
                 <div className="card-container">
                   <span>دیدگاه‌ها</span>
-                  <CommentForm />
+                  <CommentForm movieId={movie.id}/>
                   {movie.comments.map(comment => (
                     <div className="vote-container" key={comment.id}>
                       <span className="title">{comment.commentOwnerName}</span>
