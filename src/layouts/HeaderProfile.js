@@ -1,11 +1,14 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './HeaderProfile.css';
 import './Dropdown.css';
 
 
-export default function HeaderProfile(props) {
+export default function HeaderProfile() {
   var isLoggedIn = localStorage.getItem('userLoggedIn');
   var userId = localStorage.getItem('userId');
+
+  const location = useLocation();
+
 
   return (
     <div className="dropdown porfile-dropdown-contianer">
@@ -23,7 +26,7 @@ export default function HeaderProfile(props) {
           </>
           :
           <>
-            <Link className="menu-item dropdown-item " to="/login">ورود</Link>
+            <Link state={{ from: location }} className="menu-item dropdown-item " to="/login">ورود</Link>
             <Link className="menu-item dropdown-item " to='signup'>ثبت نام</Link>
           </>
         }
