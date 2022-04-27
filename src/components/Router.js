@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Layout from "../layouts/Layout";
 import Actor from "../pages/Actor";
 import Login from "../pages/Login";
@@ -12,6 +12,7 @@ import NotFound404 from "../pages/NotFound404";
 export default function Router() {
   return (
     <Routes>
+      <Route path='/' element={<Navigate to='/movies' />} />
       <Route path='*' element={<NotFound404 />} />
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<Signup />} />
