@@ -6,6 +6,7 @@
   display: inherit;
   justify-content: center;
   margin: 10px 0;
+  cursor: pointer;
 }
 
 .show .menu-item:hover {
