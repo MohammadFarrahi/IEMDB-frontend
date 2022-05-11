@@ -18,54 +18,70 @@ export default function Movies() {
   const [movies, setMovies] = useState();
   const [fetchedMovies, setFetchedMovies] = useState();
 
-  const [filterBy, setFilterBy] = useState();
-  const [searchValue, setSearchValue] = useState("");
+  // const [filterBy, setFilterBy] = useState();
+  // const [searchValue, setSearchValue] = useState("");
 
   const location = useLocation();
 
-  const filterName = (item) => {
-    return item.name.includes(searchValue);
-  };
+  // const filterName = (item) => {
+  //   return item.name.includes(searchValue);
+  // };
 
-  const filterGenre = (item) => {
-    for (var genre in item.genres) {
-      if (genre.includes(searchValue)) return true;
-    }
-    return false;
-  };
+  // const filterGenre = (item) => {
+  //   for (var genre in item.genres) {
+  //     if (genre.includes(searchValue)) return true;
+  //   }
+  //   return false;
+  // };
 
-  const filterDate = (item) => {
-    return item.releaseDate.includes(searchValue);
-  };
+  // const filterDate = (item) => {
+  //   return item.releaseDate.includes(searchValue);
+  // };
 
-  const getFilterFunc = (filterMode) => {
-    if (filterMode === "name") return filterName;
+  // const getFilterFunc = (filterMode) => {
+  //   if (filterMode === "name") return filterName;
 
-    if (filterMode === "genre") return filterGenre;
+  //   if (filterMode === "genre") return filterGenre;
 
-    if (filterMode === "date") return filterDate;
-  };
+  //   if (filterMode === "date") return filterDate;
+  // };
 
   useEffect(() => {
-    if (location.search) {
-      const searchText = location.search;
+    async function fetchFilter() {
+
+      if (location.search) {
+        const searchText = location.search;
       const params = new URLSearchParams(searchText);
 
       const filter = params.get("filterBy");
       const value = params.get("searchValue");
 
-      setFilterBy(filter);
-      setSearchValue(value);
+      setMovies(null);
+
+      try {
+        const response = await axios.get("movies?filterBy="+filter+"&filterValue="+value);
+        const movieList = response.data.content;
+        setMovies(movieList);
+        setFetchedMovies(movieList);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    fetchFilter();
+
+
+      // setFilterBy(filter);
+      // setSearchValue(value);
     }
   }, [location.search]);
 
-  useEffect(() => {
-    if (!fetchedMovies || !movies) return;
-    let newMovies = fetchedMovies.slice();
-    newMovies = newMovies.filter(getFilterFunc(filterBy));
+  // useEffect(() => {
+  //   if (!fetchedMovies || !movies) return;
+  //   let newMovies = fetchedMovies.slice();
+  //   newMovies = newMovies.filter(getFilterFunc(filterBy));
 
-    setMovies(newMovies);
-  }, [filterBy, searchValue]);
+  //   setMovies(newMovies);
+  // }, [filterBy, searchValue]);
 
   const handleSort = (basedOn) => {
     let compareFunction;
