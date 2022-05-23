@@ -11,6 +11,24 @@ export default function Signup() {
   const [name, setName] = useState('');
   const [birthDate, setBirthDate] = useState('');
 
+
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    try {
+      const data = { email, password, nickname, birthDate, name};
+      const response = await Request.post('/auth/signup/', data, {});
+
+      if (response.data.status) {
+        navigate('/login');
+      }
+
+    } catch (e) {
+      setError('ایمیل یا رمز عبور صحیح نیست')
+    }
+
+  }
+
   return (
     <div className="floating-card">
       <div className="card-body p-md-5 mx-md-4">
@@ -23,7 +41,7 @@ export default function Signup() {
           <h2 className="mt-1 mb-5 pb-1">فرم ثبت نام</h2>
         </div>
 
-        <form>
+        <form onSubmit={handleSignup}>
           <p><strong>لطفا اطلاعات خود را وارد کنید</strong></p>
 
           <div className="form-outline mb-4">
