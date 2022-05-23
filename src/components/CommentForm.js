@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { isUserLoggedIn } from "./isUserLoggedIn";
+import { isUserLoggedIn } from "../functions/isUserLoggedIn";
 
 export default function CommentForm(props) {
 

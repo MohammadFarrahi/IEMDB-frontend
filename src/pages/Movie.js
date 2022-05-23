@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom"
 import Comment from "../components/Comment";
 import CommentForm from "../components/CommentForm";
-import { isUserLoggedIn } from "../components/isUserLoggedIn";
+import { isUserLoggedIn } from "../functions/isUserLoggedIn";
 import RateMovie from "../components/RateMovie";
 
 import './Movie.css';

@@ -2,7 +2,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './HeaderProfile.css';
 import './Dropdown.css';
 import axios from 'axios';
-import { isUserLoggedIn } from '../components/isUserLoggedIn';
+import { isUserLoggedIn } from '../functions/isUserLoggedIn';
 
 
 export default function HeaderProfile() {

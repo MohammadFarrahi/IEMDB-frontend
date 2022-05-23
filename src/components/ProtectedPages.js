@@ -1,5 +1,5 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
-import { isUserLoggedIn } from "./isUserLoggedIn";
+import { isUserLoggedIn } from "../functions/isUserLoggedIn";
 
 
 export default function ProtectedPages() {
