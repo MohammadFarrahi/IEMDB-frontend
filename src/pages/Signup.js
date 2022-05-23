@@ -1,9 +1,16 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom'
 import logo from '../images/logo.png'
 import './Login.css';
 
 
 export default function Signup() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [nickname, setNickname] = useState('');
+  const [name, setName] = useState('');
+  const [birthDate, setBirthDate] = useState('');
+
   return (
     <div className="floating-card">
       <div className="card-body p-md-5 mx-md-4">
@@ -20,18 +27,60 @@ export default function Signup() {
           <p><strong>لطفا اطلاعات خود را وارد کنید</strong></p>
 
           <div className="form-outline mb-4">
-            <input type="email" id="form2Example11" className="form-control" />
+            <input
+              required
+              name='email'
+              type="email"
+              id="form2Example11"
+              className="form-control"
+              onChange={e => { setEmail(e.target.value) }}
+            />
             <label className="form-label" for="form2Example11">نام کاربری</label>
           </div>
 
           <div className="form-outline mb-4">
-            <input type="password" id="form2Example22" className="form-control" />
+            <input
+              required
+              name='password'
+              type="password"
+              id="form2Example22"
+              className="form-control"
+              onChange={e => { setPassword(e.target.value) }}
+            />
             <label className="form-label" for="form2Example22">رمز عبور</label>
           </div>
 
           <div className="form-outline mb-4">
-            <input type="password" id="form2Example22" className="form-control" />
-            <label className="form-label" for="form2Example22">تکرار رمز عبور</label>
+            <input
+              required
+              name='name'
+              id="form2Example11"
+              className="form-control"
+              onChange={e => { setName(e.target.value) }}
+            />
+            <label className="form-label" for="form2Example11">نام</label>
+          </div>
+
+          <div className="form-outline mb-4">
+            <input
+              required
+              name='nickname'
+              id="form2Example11"
+              className="form-control"
+              onChange={e => { setNickname(e.target.value) }}
+            />
+            <label className="form-label" for="form2Example11">نام مستعار</label>
+          </div>
+
+          <div className="form-outline mb-4">
+            <input
+              required
+              name="birthDate"
+              id="form2Example11"
+              className="form-control"
+              onChange={e => { setBirthDate(e.target.value) }}
+            />
+            <label className="form-label" for="form2Example11">تاریخ تولد</label>
           </div>
 
           <div className="text-center pt-1 mb-5 pb-1">
