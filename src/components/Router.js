@@ -9,6 +9,7 @@ import Watchlist from "../pages/Watchlist";
 import ProtectedPages from "./ProtectedPages";
 import UnprotectedPages from "./UnprotectedPages";
 import NotFound404 from "../pages/NotFound404";
+import Callback from "../pages/Callback";
 
 export default function Router() {
   return (

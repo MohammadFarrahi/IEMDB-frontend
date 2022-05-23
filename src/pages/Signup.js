@@ -1,3 +1,4 @@
+import { Icon } from '@iconify/react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import logo from '../images/logo.png'
@@ -121,6 +122,21 @@ export default function Signup() {
             </div>
             <p className="mb-0 me-2">حساب کاربری دارید؟</p>
           </div>
+
+          <div className="d-flex align-items-center justify-content-center pb-4">
+              <div className="mx-3">
+                <a
+                  href  ='https://github.com/login/oauth/authorize?client_id=922ec040dfe40c36e914&scope=user'
+                  style={{ textDecoration: 'none', color: 'white' }}
+                >
+                  <Icon
+                    icon="bi:github"
+                    className="star-icon "
+                    style={{ fontSize: '4rem' }}
+                  />
+                </a>
+              </div>
+            </div>
 
         </form>
 
