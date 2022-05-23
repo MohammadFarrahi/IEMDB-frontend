@@ -19,6 +19,7 @@ export default function Router() {
       <Route element={< UnprotectedPages />}>
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
+        <Route path='/callback' element={<Callback />} />
       </Route>
       {/* Protected Pages */}
       <Route element={<ProtectedPages />}>
