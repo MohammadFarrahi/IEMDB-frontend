@@ -2,10 +2,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './HeaderProfile.css';
 import './Dropdown.css';
 import axios from 'axios';
+import { isUserLoggedIn } from '../components/isUserLoggedIn';
 
 
 export default function HeaderProfile() {
-  var isLoggedIn = localStorage.getItem('userLoggedIn');
+  var isLoggedIn = isUserLoggedIn();
   var userId = localStorage.getItem('userId');
 
   const location = useLocation();

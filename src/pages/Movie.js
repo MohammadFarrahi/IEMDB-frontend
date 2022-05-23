@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom"
 import Comment from "../components/Comment";
 import CommentForm from "../components/CommentForm";
+import { isUserLoggedIn } from "../components/isUserLoggedIn";
 import RateMovie from "../components/RateMovie";
 
 import './Movie.css';
@@ -15,7 +16,7 @@ export default function Movie() {
 
   const [error, setError] = useState('');
 
-  const isLoggedIn = localStorage.getItem('userLoggedIn');
+  const isLoggedIn = isUserLoggedIn();
   const userId = localStorage.getItem('userId');
 
   const navigate = useNavigate();

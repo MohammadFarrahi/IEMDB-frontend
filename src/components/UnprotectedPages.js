@@ -1,11 +1,12 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { isUserLoggedIn } from "./isUserLoggedIn";
 
 
 export default function UnrotectedPages() {
 
   const location = useLocation();
 
-  var isLoggedIn = localStorage.getItem('userLoggedIn');
+  var isLoggedIn = isUserLoggedIn();
 
   if (isLoggedIn) {
     return <Navigate to="/movies" state={{ from: location }} replace />;

@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
+import { isUserLoggedIn } from "./isUserLoggedIn";
 
 export default function CommentForm(props) {
 
   const { movieId, addComment } = props;
 
-  const isLoggedIn = localStorage.getItem('userLoggedIn');
+  const isLoggedIn = isUserLoggedIn();
 
   const [commentText, setCommentText] = useState('');
   const handleSubmit = async e => {
