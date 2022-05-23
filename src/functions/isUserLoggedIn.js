@@ -1,3 +1,3 @@
 export function isUserLoggedIn() {
-  return localStorage.getItem('userLoggedIn');
+  return localStorage.getItem('token')? true : false;
 }
