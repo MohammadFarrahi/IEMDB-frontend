@@ -8,7 +8,7 @@ export default function Comment(props) {
   const handleVote = async vote => {
     try {
       const data = { vote };
-      const response = await axios.post('/comments/' + comment.id + '/vote/', data);
+      const response = await Request.post('/comments/' + comment.id + '/vote/', data);
       let newComment = response.data.content;
       updateComment(newComment);
     } catch (e) {

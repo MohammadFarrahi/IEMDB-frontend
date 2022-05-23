@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { isUserLoggedIn } from "../functions/isUserLoggedIn";
+import Request from "../functions/Request";
 
 export default function CommentForm(props) {
 
@@ -13,7 +14,7 @@ export default function CommentForm(props) {
     e.preventDefault();
     try {
       const data = { commentMovieId: movieId, text: commentText };
-      const response = await axios.post('/comments/', data);
+      const response = await Request.post('/comments/', data);
       const newComment = response.data.content;
       addComment(newComment);
       setCommentText('');

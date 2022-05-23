@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useState } from 'react';
 import { login } from '../functions/login';
+import Request from '../functions/Request';
 
 export default function Login() {
 
@@ -21,8 +22,7 @@ export default function Login() {
     const from = location.state?.from || '/movies';
     try {
       const data = { email, password };
-
-      const response = await axios.post('/auth/login/', data);
+      const response = await Request.post('/auth/login/', data, {});
 
       if (response.data.status) {
         login(response.data.jwt, response.data.userId);

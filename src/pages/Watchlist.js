@@ -6,6 +6,7 @@ import WatchlistCard from "../components/WatchlistCard";
 import MoviePreview from '../components/MoviePreview'
 import { Link } from 'react-router-dom';
 import { getUserId } from '../functions/getUserId';
+import Request from '../functions/Request';
 
 
 export default function Watchlist() {
@@ -18,11 +19,11 @@ export default function Watchlist() {
       try {
         const loggedInUser = getUserId();
 
-        let response = await axios.get('/users/' + loggedInUser + '/watchlist');
+        let response = await Request.get('/users/' + loggedInUser + '/watchlist');
         const watchlist = response.data.content;
         setWatchlist(watchlist);
 
-        response = await axios.get('/users/' + loggedInUser + '/recommended')
+        response = await Request.get('/users/' + loggedInUser + '/recommended')
         const recList = response.data.content;
         setRecommendList(recList);
 

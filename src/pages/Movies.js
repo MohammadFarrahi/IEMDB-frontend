@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import MoviePreview from "../components/MoviePreview";
+import Request from "../functions/Request";
 import "./Movies.css";
 
 const rateCompare = (a, b) => {
@@ -59,7 +60,7 @@ export default function Movies() {
       setMovies(null);
 
       try {
-        const response = await axios.get("movies?filterBy="+filter+"&filterValue="+value);
+        const response = await Request.get("movies?filterBy="+filter+"&filterValue="+value);
         const movieList = response.data.content;
         setMovies(movieList);
         setFetchedMovies(movieList);
@@ -96,7 +97,7 @@ export default function Movies() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get("movies");
+        const response = await Request.get("movies");
         const movieList = response.data.content;
         setMovies(movieList);
         setFetchedMovies(movieList);

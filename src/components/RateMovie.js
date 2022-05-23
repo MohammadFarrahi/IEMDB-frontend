@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import Request from '../functions/Request';
 import './RateMovie.css'
 import RateStar from './RateStar';
 
@@ -12,7 +13,7 @@ export default function RateMovie(props) {
   const handleRate = async rate => {
     try {
       const data = {rate}
-      const response = await axios.post('/movies/' + movieId + '/rate/', data);
+      const response = await Request.post('/movies/' + movieId + '/rate/', data);
 
       if(response.data.status){
         updateRate(response.data.content);

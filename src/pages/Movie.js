@@ -8,6 +8,7 @@ import RateMovie from "../components/RateMovie";
 
 import './Movie.css';
 import { getUserId } from "../functions/getUserId";
+import Request from "../functions/Request";
 
 
 export default function Movie() {
@@ -25,7 +26,7 @@ export default function Movie() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get('movies/' + id);
+        const response = await Request.get('movies/' + id);
         const movieRes = response.data.content;
         setMovie(movieRes);
       } catch (e) {
@@ -62,7 +63,7 @@ export default function Movie() {
     try {
       setError('');
       const data = { movieId: movie.id }
-      const response = await axios.post('/users/' + userId + '/watchlist/', data);
+      const response = await Request.post('/users/' + userId + '/watchlist/', data);
       if (response.data.status) {
         navigate('/watchlist/');
       }

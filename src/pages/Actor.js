@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import Request from '../functions/Request';
 import './Actor.css'
 
 export default function Actor() {
@@ -13,7 +14,7 @@ export default function Actor() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get('actors/' + id);
+        const response = await Request.get('actors/' + id);
         const actorRes = response.data.content;
         setActor(actorRes);
       } catch (e) {
