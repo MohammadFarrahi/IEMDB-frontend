@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getUserId } from "../functions/getUserId";
 
 
 export default function WatchlistCard(props) {
@@ -6,7 +7,7 @@ export default function WatchlistCard(props) {
 
   const handleDeleteFromList = async () => {
     try {
-      const userId = localStorage.getItem('userId');
+      const userId = getUserId();
       const response = await axios.delete('/users/' + userId + '/watchlist/' + movie.id);
       if(response.data.status){
         deleteFromWatchlist(movie);

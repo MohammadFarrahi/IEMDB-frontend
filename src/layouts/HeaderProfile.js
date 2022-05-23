@@ -3,11 +3,12 @@ import './HeaderProfile.css';
 import './Dropdown.css';
 import axios from 'axios';
 import { isUserLoggedIn } from '../functions/isUserLoggedIn';
+import { getUserId } from '../functions/getUserId';
 
 
 export default function HeaderProfile() {
   var isLoggedIn = isUserLoggedIn();
-  var userId = localStorage.getItem('userId');
+  var userId = getUserId();
 
   const location = useLocation();
   const navigate = useNavigate();

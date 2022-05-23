@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import WatchlistCard from "../components/WatchlistCard";
 import MoviePreview from '../components/MoviePreview'
 import { Link } from 'react-router-dom';
+import { getUserId } from '../functions/getUserId';
 
 
 export default function Watchlist() {
@@ -15,7 +16,7 @@ export default function Watchlist() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const loggedInUser = localStorage.getItem('userId');
+        const loggedInUser = getUserId();
 
         let response = await axios.get('/users/' + loggedInUser + '/watchlist');
         const watchlist = response.data.content;

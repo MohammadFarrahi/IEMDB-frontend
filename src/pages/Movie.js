@@ -17,7 +17,7 @@ export default function Movie() {
   const [error, setError] = useState('');
 
   const isLoggedIn = isUserLoggedIn();
-  const userId = localStorage.getItem('userId');
+  const userId = getUserId();
 
   const navigate = useNavigate();
 
