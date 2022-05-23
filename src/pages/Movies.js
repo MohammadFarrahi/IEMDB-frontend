@@ -67,12 +67,10 @@ export default function Movies() {
         console.log(e);
       }
     }
-    fetchFilter();
-
-
-      // setFilterBy(filter);
-      // setSearchValue(value);
-    }
+    // setFilterBy(filter);
+    // setSearchValue(value);
+  }
+  fetchFilter();
   }, [location.search]);
 
   // useEffect(() => {

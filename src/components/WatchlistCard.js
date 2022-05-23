@@ -12,7 +12,7 @@ export default function WatchlistCard(props) {
         deleteFromWatchlist(movie);
       }
     }catch (e) {
-
+      console.log(e)
     }
   }
 
