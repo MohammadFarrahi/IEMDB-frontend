@@ -4,6 +4,7 @@ import './Dropdown.css';
 import axios from 'axios';
 import { isUserLoggedIn } from '../functions/isUserLoggedIn';
 import { getUserId } from '../functions/getUserId';
+import { logout } from '../functions/logout';
 
 
 export default function HeaderProfile() {
@@ -14,16 +15,10 @@ export default function HeaderProfile() {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    try {
-      localStorage.removeItem('userLoggedIn');
-      localStorage.removeItem('userId');
-      const response = await axios.post('/auth/logout');
-      if (response.data.status) {
-        navigate('/movies');
-      }
-    } catch (e) {
-      console.log(e);
-    }
+    logout();
+    navigate('/movies');
+
+      
   }
 
   return (
