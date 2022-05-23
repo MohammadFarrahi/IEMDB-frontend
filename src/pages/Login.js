@@ -3,6 +3,7 @@ import logo from '../images/logo.png'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useState } from 'react';
+import { login } from '../functions/login';
 
 export default function Login() {
 
@@ -24,8 +25,7 @@ export default function Login() {
       const response = await axios.post('/auth/login/', data);
 
       if (response.data.status) {
-        localStorage.setItem('userLoggedIn', true);
-        localStorage.setItem('userId', email);
+        login(response.data.jwt, response.data.userId);
         navigate(from, { replace: true });
       }
 

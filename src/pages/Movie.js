@@ -7,6 +7,7 @@ import { isUserLoggedIn } from "../functions/isUserLoggedIn";
 import RateMovie from "../components/RateMovie";
 
 import './Movie.css';
+import { getUserId } from "../functions/getUserId";
 
 
 export default function Movie() {
