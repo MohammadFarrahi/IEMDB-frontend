@@ -7,22 +7,25 @@ import Movie from "../pages/Movie";
 import Movies from "../pages/Movies";
 import Watchlist from "../pages/Watchlist";
 import ProtectedPages from "./ProtectedPages";
+import UnprotectedPages from "./UnprotectedPages";
 import NotFound404 from "../pages/NotFound404";
 
 export default function Router() {
   return (
     <Routes>
       <Route path='/' element={<Navigate to='/movies' />} />
-      <Route path='*' element={<NotFound404 />} />
-      <Route path='/login' element={<Login />} />
-      <Route path='/signup' element={<Signup />} />
-      <Route element={<Layout />}>
-        <Route path='/movies' element={<Movies />} />
-        <Route path='/404' element={<NotFound404 />} />
-        <Route path='/movies/:id' element={<Movie />} />
-        <Route path='/actors/:id' element={<Actor />} />
-        {/* Protected Pages */}
-        <Route element={<ProtectedPages />}>
+      <Route path='*' element={<Navigate to='/404' />} />
+      <Route path='/404' element={<NotFound404 />} />
+      <Route element={< UnprotectedPages />}>
+        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Signup />} />
+      </Route>
+      {/* Protected Pages */}
+      <Route element={<ProtectedPages />}>
+        <Route element={<Layout />}>
+          <Route path='/movies' element={<Movies />} />
+          <Route path='/movies/:id' element={<Movie />} />
+          <Route path='/actors/:id' element={<Actor />} />
           <Route path='/watchlist' element={<Watchlist />} />
         </Route>
       </Route>
