@@ -25,10 +25,9 @@ export default function Login() {
       const response = await Request.post('/auth/login/', data, {});
 
       if (response.data.status) {
-        login(response.data.jwt, response.data.userId);
+        login(response.data.content.jwt, response.data.content.userEmail);
         navigate(from, { replace: true });
       }
-
     } catch (e) {
       setError('ایمیل یا رمز عبور صحیح نیست')
     }
