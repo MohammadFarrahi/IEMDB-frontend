@@ -1,6 +1,7 @@
 import { Icon } from '@iconify/react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
+import Request from '../functions/Request';
 import logo from '../images/logo.png'
 import './Login.css';
 
@@ -22,12 +23,13 @@ export default function Signup() {
     try {
       const data = { email, password, nickname, birthDate, name};
       const response = await Request.post('/auth/signup/', data, {});
-
+      
       if (response.data.status) {
         navigate('/login');
       }
 
     } catch (e) {
+      console.log(e)
       setError('عملیات با موفقیت انجام نشد')
     }
 
