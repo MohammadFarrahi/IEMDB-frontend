@@ -1,5 +1,5 @@
 variables:
-    IMAGE_NAME: ie_account/iemdb
+    IMAGE_NAME: quay.io/ie_account/iemdb
     IMAGE_TAG: front-end-1.0
 
 stages:
