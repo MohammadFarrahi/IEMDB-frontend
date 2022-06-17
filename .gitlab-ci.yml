@@ -1,5 +1,5 @@
 variables:
-    IMAGE_NAME: ffmohammad/iemdb
+    IMAGE_NAME: ie_account/iemdb
     IMAGE_TAG: front-end-1.0
 
 stages:
@@ -10,6 +10,8 @@ build_image:
     image: docker:20.10.17
     services:
         - docker:20.10.17-dind
+    before_script:
+        - docker login quay.io -u $REGISTRY_USER -p $REGISTRY_PASS
     script:
         - docker build -t $IMAGE_NAME:$IMAGE_TAG .
         - docker push $IMAGE_NAME:$IMAGE_TAG
