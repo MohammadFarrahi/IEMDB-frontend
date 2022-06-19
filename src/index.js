@@ -7,7 +7,7 @@ import App from "./app/App";
 
 import axios from "axios";
 
-axios.defaults.baseURL = process.env.API_URL;
+axios.defaults.baseURL = "http://iemdb-back-service:8000";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
